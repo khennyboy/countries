@@ -1,9 +1,10 @@
 import allCountry from '../data/data.json'
 
-export default async function getCountry({ page, continent }) {
+export default async function getCountry({ page, continent, search }) {
     const start = (page - 1) * 10;
     const end = page * 10;
     let countries;
+    console.log(search)
 
     try {
         // Delay the promise manually
@@ -13,13 +14,17 @@ export default async function getCountry({ page, continent }) {
 
         if (continent !== 'all') {
             countries = allCountry.filter((country) => country.region === continent);
-        } else {
+        }
+        if (search !== '') {
+            countries = allCountry.filter((country) => country.name.toLowerCase() === search.toLowerCase())
+        }
+        else {
             countries = allCountry;
         }
 
         return {
             totalCountry: countries.length,
-            loadCountry: countries.slice(start, end),
+            loadCountry: search !== '' ? countries : countries.slice(start, end),
         };
     } catch (error) {
         console.error(error);

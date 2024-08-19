@@ -17,7 +17,7 @@ const Header = () => {
                     <span className='inline-block ml-2'>{IsDark ? 'Dark Mode' : 'Light Mode'}</span>
                 </button>
             </div>
-            <main className='mt-[6rem] px-[6rem] tablet:px-4 largeTablet:px-6'>
+            <main className='mt-[6rem]  px-[6rem] tablet:px-6 largeTablet:px-6'>
                 <Outlet />
             </main>
         </div>

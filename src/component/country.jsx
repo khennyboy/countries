@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import JobSkeleton from './contentLoader'
+import JobSkeleton from './allCountryskeleton'
 import NumberWithCommas from './fomatNumber'
 import Pagination from './pagination'
 import { useCountry } from './useCountry'
@@ -8,6 +8,7 @@ import { useCountry } from './useCountry'
 const Country = () => {
     const navigate = useNavigate()
     const { isLoading, countries: { totalCountry, loadCountry } = {} } = useCountry()
+
     if (isLoading) return (
         <div className='grid grid-cols-4 gap-8 largeTablet:grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-1 tablet:gap-8 mb-8'>
             {Array.from({ length: 10 }).map((_, index) => (
@@ -17,6 +18,11 @@ const Country = () => {
             ))}
         </div>
     )
+    if (loadCountry.length === 0) {
+        return (
+            <p>There is no country available for this search</p>
+        )
+    }
     return (
         <div>
             <div className='grid grid-cols-4 gap-16 largeTablet:grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-1 tablet:gap-8 mb-8'>
