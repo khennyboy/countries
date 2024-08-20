@@ -29,7 +29,7 @@ const CountryDetail = () => {
                 <BsArrowLeft className='inline-block mr-1 align-middle' /> Back
             </div>
             <div className='flex gap-16 items-center tablet:flex-col tablet:items-start'>
-                <img src={selectedCountry.flags.png} alt="country logo" loading='lazy' className='w-2/5 object-cover tablet:w-[70%] tablet:aspect-video mobile:w-full' />
+                <img src={selectedCountry.flags.png} alt="countrylogo" loading='lazy' className='w-2/5 object-contain tablet:w-[70%] tablet:aspect-video mobile:w-full shadow-md rounded-[5px]' />
                 <div>
                     <h3 className='font-bold text-lg mb-4'>{selectedCountry.name}</h3>
                     <div className='flex gap-12 tablet:flex-col'>

@@ -12,12 +12,12 @@ export const useCountry = () => {
     // handle search button
     const search = !searchParams.get('search') ? '' : searchParams.get('search')
 
-    const { isLoading, data: countries } = useQuery({
+    const { isLoading, data } = useQuery({
         queryKey: ['countries', page, continent, search],
         queryFn: () => getCoutry({ page, continent, search }),
     });
 
-    const totalCountry = countries?.totalCountry
+    const totalCountry = data?.allData
     const pageCount = Math.ceil(totalCountry / 10)
 
     if (page < pageCount) {
@@ -33,5 +33,5 @@ export const useCountry = () => {
             queryFn: () => getCoutry({ page: page - 1, continent, search })
         })
     }
-    return { isLoading, countries }
+    return { isLoading, data }
 }

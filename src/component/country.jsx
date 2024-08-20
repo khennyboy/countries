@@ -7,7 +7,7 @@ import { useCountry } from './useCountry'
 
 const Country = () => {
     const navigate = useNavigate()
-    const { isLoading, countries: { totalCountry, loadCountry } = {} } = useCountry()
+    const { isLoading, data: { totalCountry, loadCountry = [] } = {} } = useCountry()
 
     if (isLoading) return (
         <div className='grid grid-cols-4 gap-8 largeTablet:grid-cols-3 tablet:grid-cols-2 mobile:grid-cols-1 tablet:gap-8 mb-8'>

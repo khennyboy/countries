@@ -9,6 +9,8 @@ const HandleFilter = ({ options, field }) => {
         searchParams.set(field, value)
         if (searchParams.get('page')) searchParams.set('page', 1)
         setSearchParams(searchParams)
+        if (searchParams.get('search')) searchParams.set('search', '')
+        setSearchParams(searchParams)
     }
 
 
@@ -18,7 +20,7 @@ const HandleFilter = ({ options, field }) => {
                 const active = option === currentFilter
                 return (
                     <button
-                        className={`hover:bg-lightGray dark:hover:bg-veryDarkBlue ${active ? 'bg-veryDarkBlue' : ''}`}
+                        className={`dark:hover:bg-veryDarkBlue hover:bg-lightGray ${active ? 'dark:bg-veryDarkBlue bg-lightGray' : 'bg-none'}`}
                         disabled={option === currentFilter}
                         key={index}
                         onClick={() => handleClick(option)}
